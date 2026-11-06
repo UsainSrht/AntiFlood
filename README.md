@@ -23,15 +23,25 @@ Download the latest version on [Modrinth](https://modrinth.com/plugin/antiflood)
 
 ## 🛠️ Requirements & Compatibility
 
-- **Minecraft Version:** 1.16+ (Spigot, Paper, Purpur, etc.)
-- **Java Version:** Java 8 or higher
+One universal jar works on every platform:
+
+| Platform | Support |
+|----------|---------|
+| Spigot / Paper / Purpur | Minecraft 1.16+, Java 8+ |
+| Folia | Supported |
+| Fabric | Minecraft 26.1+, Java 25 (Fabric API not required) |
+| NeoForge | Minecraft 26.1+, Java 25 |
+
+## 🔨 Building
+
+`./gradlew assemble` produces `build/libs/AntiFlood-<version>.jar` (requires JDK 25).
 
 ---
 
 ## 📥 Installation
 
 1. Download the plugin from [Modrinth](https://modrinth.com/plugin/antiflood).
-2. Place the `.jar` file into your server's `plugins/` directory.
+2. Place the `.jar` file into `plugins/` (Spigot/Paper/Purpur/Folia) or `mods/` (Fabric/NeoForge).
 3. Restart or reload your Minecraft server.
 
 ---

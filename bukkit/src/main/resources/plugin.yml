@@ -1,6 +1,7 @@
 name: AntiFlood
-version: '${project.version}'
+version: '${version}'
 main: me.usainsrht.antiflood.AntiFlood
 api-version: '1.16'
+folia-supported: true
 author: UsainSrht
 description: Simple Minecraft plugin to prevent flood machines using pistons and waterlogged blocks.

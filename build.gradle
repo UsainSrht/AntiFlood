@@ -1,0 +1,24 @@
+// Root project: merges the Bukkit plugin, Fabric mod and NeoForge mod into ONE universal jar.
+// Each platform only reads its own descriptor (plugin.yml / fabric.mod.json / neoforge.mods.toml),
+// so the combined jar loads on Spigot, Paper, Purpur, Folia, Fabric and NeoForge.
+plugins {
+    id 'base'
+}
+
+version = mod_version
+
+def mergedJar = tasks.register('universalJar', Jar) {
+    archiveBaseName = 'AntiFlood'
+    archiveVersion = mod_version
+    destinationDirectory = layout.buildDirectory.dir('libs')
+    duplicatesStrategy = DuplicatesStrategy.FAIL
+    ['bukkit', 'fabric', 'neoforge'].each { name ->
+        def sub = project(":${name}")
+        dependsOn sub.tasks.named('jar')
+        from({ zipTree(sub.tasks.named('jar').get().archiveFile) }) {
+            exclude 'META-INF/MANIFEST.MF'
+        }
+    }
+}
+
+tasks.named('assemble') { dependsOn mergedJar }
